@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'raisely-code-challenge',
+    podModulePrefix: 'raisely-code-challenge/ui-pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
