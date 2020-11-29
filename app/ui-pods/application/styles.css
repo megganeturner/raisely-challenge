@@ -1,0 +1,33 @@
+@value color: 'raisely-code-challenge/styles/color';
+
+@value raiselyPurpleSecondary, raiselyPurplePrimary from color;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: arial;
+}
+
+a {
+  text-decoration: none;
+  color: raiselyPurpleSecondary;
+  border-bottom: 1px solid raiselyPurpleSecondary;
+}
+
+a:visited {
+  color: raiselyPurpleSecondary;
+}
+
+a:hover {
+  color: raiselyPurplePrimary;
+}
