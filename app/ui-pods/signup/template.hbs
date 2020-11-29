@@ -1,0 +1,34 @@
+{{#if isLoading}}
+  {{loader}}
+{{/if}}
+
+{{#unless registrationSuccess}}
+  <form {{action 'createUser' on="submit"}} local-class="signup-panel">
+    <h1>Sign Up</h1>
+
+    <label for="userFirstName">First Name</label>
+    {{input type="text" value=userFirstName id="userFirstName" placeholder="Joe"}}
+    <label for="userLastName">Last Name</label>
+    {{input type="text" value=userLastName id="userLastName" placeholder="Bloggs"}}
+    <label for="userEmail">Email</label>
+    {{input type="text" value=userEmail id="userEmail" placeholder="joe@bloggs.com" focus-out="emailFocusOut"}}
+    {{#if (not isValidFormatEmail)}}
+      <div local-class="error-message">
+        Please enter a valid email address
+      </div>
+    {{else if userExists}}
+      <div local-class="error-message">
+        This email address is already in use, please enter a new email address
+      </div>
+    {{/if}}
+    <label for="userPassword">Password</label>
+    {{input type="password" value=userPassword id="userPassword" placeholder="Password"}}
+    <button type="submit">Sign Up</button>
+    <div local-class="subtext">Already have an account? Take me to <a href="#">log in</a></div>
+  </form>
+{{else}}
+  <div local-class="registration-success-container">
+    <h1>👋 Welcome to Raisely! 👋</h1>
+    <p>You'll receive a confirmation email shortly. Once you've clicked the magic link, you'll be able to <a href="#">log in</a>.</p>
+  </div>
+{{/unless}}
