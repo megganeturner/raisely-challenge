@@ -1,0 +1,40 @@
+@value color: 'raisely-code-challenge/styles/color';
+@value raiselyPurplePrimary, raiselyPurpleSecondary from color;
+
+.global-header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  max-width: 200px;
+}
+
+.global-header a {
+  border: none;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav > a {
+  padding: 10px;
+  position: relative;
+}
+
+.nav > a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 1px solid raiselyPurpleSecondary;
+  transition: all 280ms cubic-bezier(0.115, 0.93, 0.465, 0.905);
+}
+
+.nav > a:hover:after {
+  width: 100%;
+}
