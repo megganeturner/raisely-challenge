@@ -1,7 +1,11 @@
 # raisely-code-challenge
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the repository for the Raisely code challenge.
+The deployed app can be found at [https://epic-mclean-83cb2a.netlify.app/signup](https://epic-mclean-83cb2a.netlify.app/signup).
+
+This project is structured using [Ember pods](https://www.programwitherik.com/ember-pods/), and the relevant code can be found in the following folders:
+* **Ember Data files** are in the `app/adapters`, `app/models`, and `app/serializers` folders
+* **UI related files** (routes, components etc.) are in the `app/ui-pods/` folder
 
 ## Prerequisites
 
