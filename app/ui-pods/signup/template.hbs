@@ -6,13 +6,13 @@
   <form {{action 'createUser' on="submit"}} local-class="signup-panel">
     <h1>Sign Up</h1>
 
-    <label for="userFirstName">First Name</label>
-    {{input type="text" value=userFirstName id="userFirstName" placeholder="Joe"}}
-    <label for="userLastName">Last Name</label>
-    {{input type="text" value=userLastName id="userLastName" placeholder="Bloggs"}}
-    <label for="userEmail">Email</label>
-    {{input type="text" value=userEmail id="userEmail" placeholder="joe@bloggs.com" focus-out="emailFocusOut"}}
-    {{#if (not isValidFormatEmail)}}
+    <label for="userFirstName">First Name*</label>
+    {{input type="text" value=userFirstName id="userFirstName" placeholder="Joe" required=true}}
+    <label for="userLastName">Last Name*</label>
+    {{input type="text" value=userLastName id="userLastName" placeholder="Bloggs" required=true}}
+    <label for="userEmail">Email*</label>
+    {{input type="text" value=userEmail id="userEmail" placeholder="joe@bloggs.com" required=true focus-out="emailFocusOut"}}
+    {{#if (eq isValidFormatEmail false)}}
       <div local-class="error-message">
         Please enter a valid email address
       </div>
@@ -21,9 +21,9 @@
         This email address is already in use, please enter a new email address
       </div>
     {{/if}}
-    <label for="userPassword">Password</label>
-    {{input type="password" value=userPassword id="userPassword" placeholder="Password"}}
-    <button type="submit">Sign Up</button>
+    <label for="userPassword">Password*</label>
+    {{input type="password" value=userPassword id="userPassword" placeholder="Password" required=true}}
+    <button type="submit" disabled={{not canSubmitForm}}>Sign Up</button>
     <div local-class="subtext">Already have an account? Take me to <a href="#">log in</a></div>
   </form>
 {{else}}

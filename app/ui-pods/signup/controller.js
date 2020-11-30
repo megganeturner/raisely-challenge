@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
   store: service(),
@@ -10,7 +11,18 @@ export default Controller.extend({
   isLoading: false,
   userExists: false,
   registrationSuccess: false,
-  isValidFormatEmail: true,
+  isValidFormatEmail: null,
+
+  canSubmitForm: computed('userFirstName', 'userLastName', 'userEmail', 'userPassword', 'userExists', function p () {
+    const hasFirstName = this.get('userFirstName').length > 0;
+    const hasLastName = this.get('userLastName').length > 0;
+    const hasEmail = this.get('userEmail').length > 0;
+    const validEmail = this.get('isValidFormatEmail');
+    const userExists = this.get('userExists');
+    const hasPassword = this.get('userPassword').length > 0;
+
+    return hasFirstName && hasLastName && hasEmail && validEmail && hasPassword && ! userExists;
+  }),
 
 
   actions: {
@@ -31,7 +43,6 @@ export default Controller.extend({
           firstName,
           lastName,
           email,
-          // obviously in a real app we wouldn't be sending the password as plain text
           password
         });
 
@@ -43,7 +54,7 @@ export default Controller.extend({
       this.set('isLoading', false);
     },
 
-    emailFocusOut: function () {
+    emailFocusOut: async function () {
       const email = this.get('userEmail');
       // from https://www.w3resource.com/javascript/form/email-validation.php
       const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -53,6 +64,14 @@ export default Controller.extend({
       }
       else {
         this.set('isValidFormatEmail', true);
+        const validatedUser = await this.store.findRecord('validate-user', email);
+
+        if (validatedUser.data.status === 'EXISTS') {
+          this.set('userExists', true);
+        }
+        else {
+          this.set('userExists', false);
+        }
       }
     },
   }
