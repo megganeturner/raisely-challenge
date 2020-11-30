@@ -5,7 +5,7 @@ export default Serializer.extend({
     return rawPayload;
   },
 
-  serialize(snapshot, options) {
+  serialize(snapshot) {
     return {
       campaignUuid: snapshot.attributes().campaignUuid,
       data: {
