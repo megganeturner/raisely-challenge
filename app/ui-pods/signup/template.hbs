@@ -11,7 +11,7 @@
     <label for="userLastName">Last Name*</label>
     {{input type="text" value=userLastName id="userLastName" placeholder="Bloggs" required=true}}
     <label for="userEmail">Email*</label>
-    {{input type="text" value=userEmail id="userEmail" placeholder="joe@bloggs.com" required=true focus-out="emailFocusOut"}}
+    {{input type="text" value=userEmail id="userEmail" placeholder="joe@bloggs.com" required=true focus-out=(action "emailFocusOut")}}
     {{#if (eq isValidFormatEmail false)}}
       <div local-class="error-message">
         Please enter a valid email address
