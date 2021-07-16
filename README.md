@@ -1,7 +1,7 @@
 # raisely-code-challenge
 
 This is the repository for the Raisely code challenge.
-The deployed app can be found at [https://epic-mclean-83cb2a.netlify.app/signup](https://epic-mclean-83cb2a.netlify.app/signup).
+The deployed app can be found at [https://epic-mclean-83cb2a.netlify.app](https://epic-mclean-83cb2a.netlify.app).
 
 This project is structured using [Ember pods](https://www.programwitherik.com/ember-pods/), and the relevant code can be found in the following folders:
 * **Ember Data files** are in the `app/adapters`, `app/models`, and `app/serializers` folders
